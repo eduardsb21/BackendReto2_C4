@@ -26,7 +26,7 @@ function activaNuevo() {
  * Esta función ejecuta la petición asincrona al servidor, envia una
  * petición al ws de tipo POST para insertar un producto
  */
-function registrar() {
+function registrarProd() {
 
     //crea un objeto javascript
     let datos = {
@@ -48,7 +48,7 @@ function registrar() {
 
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "http://localhost:8081/api/supplements/new",
+            url: "http://localhost:8085/api/supplements/new",
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
             //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -99,39 +99,40 @@ function validar() {
     let photography= $("#inputImage").val();
     
     //valida que los campos no sean vacios
-    if (validaesVacio(reference)) {
+    if (reference === "") {
+
         errores[0].style.display = "block";
         $("#inputReference").focus();
         return false;
-    } else if (validaesVacio(brand)) {
+    } else if (brand === "") {
         errores[1].style.display = "block";
         $("#inputBrand").focus();
         return false;
-    } else if (validaesVacio(category)) {
+    } else if (category==="") {
         errores[2].style.display = "block";
         $("#inputCategory").focus();
         return false;
-    } else if (validaesVacio(objetivo)) {
+    } else if (objetivo==="") {
         errores[3].style.display = "block";
         $("#inputObjetive").focus();
         return false;
-    } else if (validaesVacio(description)) {
+    } else if (description==="") {
         errores[4].style.display = "block";
         $("#inputDescription").focus();
         return false;
-    } else if (validaesVacio(availability)) {
+    } else if (availability==="") {
         errores[5].style.display = "block";
         $("#inputAvailability").focus();
         return false;
-    } else if (validaesVacio(price)) {
+    } else if (price==="") {
         errores[6].style.display = "block";
         $("#inputPrice").focus();
         return false;
-    } else if (validaesVacio(quantity)) {
+    } else if (quantity==="") {
         errores[7].style.display = "block";
         $("#inputQuantity").focus();
         return false;
-    } else if (validaesVacio(photography)) {
+    } else if (photography==="") {
         errores[8].style.display = "block";
         $("#inputImage").focus();
         return false;

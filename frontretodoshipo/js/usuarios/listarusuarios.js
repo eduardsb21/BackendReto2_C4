@@ -49,6 +49,8 @@ $(document).ready(function () {
         $("#mensaje").html("");
         $("#alerta").hide(500);
     });
+
+    estadoInicialListarUsu();
 });
 
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
@@ -56,7 +58,7 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8081/api/user/all",
+        url: "http://localhost:8085/api/user/all",
 
         // especifica el tipo de petición http: POST, GET, PUT, DELETE
         type: 'GET',
@@ -149,7 +151,7 @@ function listarUsuarios(items) {
 
 }
 
-function estadoInicial() {
+function estadoInicialListarUsu() {
     $("#alerta").hide();
     $("#mensaje").html("");
     $("#nuevo").hide();
@@ -170,20 +172,6 @@ function estadoInicial() {
     $("#quantity").val("");
     $("#photography").val("");
 
-    let user = sessionStorage.getItem("user");
-    let userJS;
-    let typeUser;
+    infoUsuario();
 
-    if (user == null) location.href = "index.html";
-    else {
-        userJS = JSON.parse(user);
-
-        if (userJS.type == 'ADM')
-            typeUser = "ADMINISTRADOR";
-        else location.href = "index.html";
-    }
-    $("#userName").html(userJS.name);
-    $("#userEmail").html(userJS.email);
-    $("#userType").html(typeUser);
-    $("#titulo").html("Bienvenido(a): " + userJS.name);
 }

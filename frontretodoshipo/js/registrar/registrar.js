@@ -93,7 +93,7 @@ function register(){
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: `http://localhost:8081/api/user/new`,
+        url: `http://localhost:8085/api/user/new`,
 
         //Datos de la peticion
         data: datosPeticion,

@@ -7,10 +7,15 @@
         campo.value = campo.value.toUpperCase();
     }, 1);
 }
-
+/**
+ * 
+ * @param {*} dato 
+ * @returns 
+ 
 function validaesVacio(dato){
     return !dato.trim().length;
 }
+*/
 
 /**
  * valida el correo electrónico: tomado de
@@ -27,6 +32,7 @@ function validaesVacio(dato){
  function infoUsuario() {
 
     let user = sessionStorage.getItem("user");
+    console.log(user);
 
     if (user == null) location.href = "index.html";
     else {
@@ -35,11 +41,11 @@ function validaesVacio(dato){
         let typeUser;
 
         if (userJS.type=='ASE')
-            location.href= "index.html";
+            typeUser="ASESOR";
         else if (userJS.type=='ADM')
             typeUser="ADMINISTRADOR";
         else if (userJS.type=='COORD')
-            location.href= "index.html";
+            typeUser="COORDINADOR";
 
         $("#userName").html(userJS.name);
         $("#userEmail").html(userJS.email);

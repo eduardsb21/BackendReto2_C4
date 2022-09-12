@@ -3,7 +3,7 @@
 //cuando carga la página html se ejecuta la función: listar()
 $(document).ready(function () {
     //configura el aspecto inicial de la pagina
-    estadoInicial();
+    estadoInicialProd();
     //ejecuta función para enviar petición al ws
     listar();
 });
@@ -13,7 +13,7 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8081/api/supplements/all",
+        url: "http://localhost:8085/api/supplements/all",
         
         // especifica el tipo de petición http: POST, GET, PUT, DELETE
         type: 'GET',
@@ -95,7 +95,7 @@ function listarProductos(items){
 
 }
 
-function estadoInicial(){
+function estadoInicialProd(){
     $("#alerta").hide();
     $("#nuevo").hide();
     $("#editar").hide();
@@ -105,4 +105,6 @@ function estadoInicial(){
     $("#listado").show(500);
 
     infoUsuario();
+
+    
 }

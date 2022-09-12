@@ -7,6 +7,7 @@ function mostrarEliminar(reference,infproducto){
     $("#idDelete").val(reference);
     $("#productDelete").html(infproducto);
     $("#eliminar").show(1000);
+    borrarRegistro(reference);
 }
 
 /*
@@ -25,7 +26,7 @@ function borrarRegistro(llaveRegistro) {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8081/api/accessory/" + llaveRegistro,
+        url: "http://localhost:8085/api/supplements/" + llaveRegistro,
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
