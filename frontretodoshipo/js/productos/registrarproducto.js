@@ -1,3 +1,5 @@
+//import { estadoInicialProd, listarProd } from "./listarproductos";
+
 const errores = document.getElementsByClassName("err");
 /**
  * Configura el aspecto de la página para ingresar un nuevo registro
@@ -41,7 +43,7 @@ function registrarProd() {
         photography: $("#inputImage").val()
     }
 
-    if (validar()) {
+    if (validarProd()) {
 
         //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
         let datosPeticion = JSON.stringify(datos);
@@ -70,8 +72,8 @@ function registrarProd() {
                 $("#mensajes").show(1000);
                 $("#mensajes").html("Registro ingresado...");
                 $("#mensajes").hide(1000);
-                listar();
-                estadoInicial();
+                listarProd();
+                estadoInicialProd();
             },
 
             // código a ejecutar si la petición falla;
@@ -85,7 +87,7 @@ function registrarProd() {
     }
 }
 
-function validar() {
+function validarProd() {
 
     //obtiene valores
     let reference = $("#inputReference").val();
@@ -140,6 +142,9 @@ function validar() {
 
     return true;
 }
+
+
+
 
 
 //eventos clic sobre los campos para ocultar los mensajes de error

@@ -1,11 +1,17 @@
+
+
+
 //$(document).ready(function () {
 //carga la librería javascript de jquery cuando se carga la página barcos.html por completo
-//cuando carga la página html se ejecuta la función: listar()
+
+//import { infoUsuario } from "../util/util";
+
+//cuando carga la página html se ejecuta la función: listarUsu()
 $(document).ready(function () {
     //configura el aspecto inicial de la pagina
     //estadoInicial();
     //ejecuta función para enviar petición al ws
-    listar();
+    listarUsu();
 
     //si hizo clic en el enlace de cerrar sesion
     $("#cerrarSession").click(function (){
@@ -55,7 +61,7 @@ $(document).ready(function () {
 
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
 //petición al ws de tipo GET
-function listar() {
+function listarUsu() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
         url: "http://localhost:8085/api/user/all",
@@ -70,7 +76,7 @@ function listar() {
         // la respuesta es pasada como argumento a la función
         success: function (respuesta) {
             //recibe el arreglo 'items' de la respuesta a la petición
-            listarUsuarios(respuesta);
+            listarUsuUsuarios(respuesta);
         },
 
         // código a ejecutar si la petición falla;
@@ -96,7 +102,7 @@ function listar() {
     y modificar su html agregando el contenido de la variable 'tabla'.
     
 */
-function listarUsuarios(items) {
+function listarUsuUsuarios(items) {
     $("#listado").html("");
     $("#listado").show(500);
 
@@ -113,7 +119,7 @@ function listarUsuarios(items) {
                     <th colspan="2">Acciones</th>
                   </tr>`;
     //escribe en la consola del desarrollador para efectos de depuración
-    console.log(items);
+    //console.log(items);
 
     //recorrer el arreglo de items de producto para pintarlos en la tabla
     for (let index = 0; index < items.length; index++) {

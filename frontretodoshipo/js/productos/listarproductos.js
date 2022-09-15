@@ -1,16 +1,19 @@
 //$(document).ready(function () {
 //carga la librería javascript de jquery cuando se carga la página barcos.html por completo
-//cuando carga la página html se ejecuta la función: listar()
+
+//import { infoUsuario } from "../util/util";
+
+//cuando carga la página html se ejecuta la función: listarProd()
 $(document).ready(function () {
     //configura el aspecto inicial de la pagina
     estadoInicialProd();
     //ejecuta función para enviar petición al ws
-    listar();
+    listarProd();
 });
 
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
 //petición al ws de tipo GET
-function listar() {
+function listarProd() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
         url: "http://localhost:8085/api/supplements/all",
@@ -67,7 +70,7 @@ function listarProductos(items){
                     <th colspan="2">Acciones</th>
                   </tr>`;
     //escribe en la consola del desarrollador para efectos de depuración
-    console.log(items);
+    //console.log(items);
 
     //recorrer el arreglo de items de producto para pintarlos en la tabla
     for (let index = 0; index < items.length; index++) {

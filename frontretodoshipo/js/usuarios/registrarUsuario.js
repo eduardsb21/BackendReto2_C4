@@ -1,3 +1,6 @@
+//import { validaesVacio, ValidateEmail } from "../util/util";
+//import { estadoInicialListarUsu, listarUsu } from "./listarusuarios";
+
 /**
  * Configura el aspecto de la página para ingresar un nuevo registro
  */
@@ -14,14 +17,15 @@ function activaNuevo() {
  * Esta función ejecuta la petición asincrona al servidor, envia una
  * petición al ws de tipo POST para insertar un producto
  */
-function registrar() {
+function registrarUsuario() {
 
     let birthday= $("#birthtDay").val();
     let position = birthday.indexOf("-");
     let monthBirthtDay = birthday.substring(position+1,position+3)
     
     //crea un objeto javascript
-    let datos = {
+    let datosUsu = {
+        id : $("#id").val(),
         identification: $("#identification").val(),
         name: $("#name").val(),
         birthtDay: $("#birthtDay").val(),
@@ -34,19 +38,19 @@ function registrar() {
         type: $("#type").val()
     }
 
-    if (validar()) {
+    if (validarUsu()) {
 
-        //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
-        let datosPeticion = JSON.stringify(datos);
+        //convierte el objeto javascript a json antes de agregarlo a los datosUsu de la petición
+        let PeticionUsu = JSON.stringify(datosUsu);
 
         $.ajax({
             method: "POST",
             // la URL para la petición (url: "url al recurso o endpoint")
             url: "http://localhost:8085/api/user/new",
             // la información a enviar
-            // (también es posible utilizar una cadena de datos)
-            //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
-            data: datosPeticion,
+            // (también es posible utilizar una cadena de datosUsu)
+            //si el metodo del servicio recibe datosUsu, es necesario definir el parametro adicional
+            data: PeticionUsu,
             dataType: 'json',
             // especifica el tipo de petición http: POST, GET, PUT, DELETE
 
@@ -59,10 +63,11 @@ function registrar() {
             // la respuesta es pasada como argumento a la función
             complete: function (respuesta) {
                 //escribe en la consola del desarrollador para efectos de depuración
-                console.log(respuesta);
+                console.log(respuesta.status);
                 Swal.fire('Registro ingresado correctamente...');
              
-                //listar();
+                listarUsu();
+                estadoInicialListarUsu();
                 
             },
 
@@ -78,7 +83,7 @@ function registrar() {
 
 }
 
-function validar(){
+function validarUsu(){
     //obtiene valores
     let identification = $("#identification").val();
     let name =  $("#name").val();

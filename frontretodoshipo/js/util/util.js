@@ -2,26 +2,23 @@
  * Recibe el campo y convierte su contenido a mayuscula
  * @param {*} campo nombre del campo
  */
- function upperCaseF(campo) {
+function upperCaseF(campo) {
     setTimeout(function () {
         campo.value = campo.value.toUpperCase();
     }, 1);
 }
-/**
- * 
- * @param {*} dato 
- * @returns 
+
  
 function validaesVacio(dato){
     return !dato.trim().length;
 }
-*/
+
 
 /**
  * valida el correo electrónico: tomado de
  * https://www.w3resource.com/javascript/form/email-validation.php
  */
- function ValidateEmail(valor) {
+function ValidateEmail(valor) {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return valor.match(mailformat);
 }
@@ -29,10 +26,10 @@ function validaesVacio(dato){
 /**
  * Información del usuario
  */
- function infoUsuario() {
+function infoUsuario() {
 
     let user = sessionStorage.getItem("user");
-    console.log(user);
+    //console.log(user);
 
     if (user == null) location.href = "index.html";
     else {
@@ -53,3 +50,4 @@ function validaesVacio(dato){
         $("#titulo").html("Bienvenido(a): " + userJS.name);    
     }
 }
+

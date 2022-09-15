@@ -1,3 +1,5 @@
+//import { validaesVacio, ValidateEmail } from "../util/util";
+
 //Definiciones globales al script
 const errores = document.getElementsByClassName("err");
 const alerta = document.getElementById("alerta");
@@ -7,10 +9,10 @@ const mensaje = document.getElementById("mensaje");
  * Este evento de JQuery se ejecuta cuando se termina de cargar la libreria
  */
 $(document).ready(function () {
-    estadoInicial();
+    estadoInicialLogin();
     //Evento clic del botón, ejecuta una petición al ws de autenticación si el usuario ingreso información
     $("#autenticate").click(function () {
-        if (validar()){
+        if (validarLogin()){
             autenticate();
         }
     });
@@ -28,7 +30,7 @@ $(document).ready(function () {
 /**
  * Estado inicial de la pagina
  */
-function estadoInicial() {
+function estadoInicialLogin() {
     $("#alerta").hide();
     errores[0].style.display = "none";
     errores[1].style.display = "none";
@@ -39,7 +41,7 @@ function estadoInicial() {
  * Valida el correcto diligenciamiento de los campos del formulario
  * @returns true si pasa las validaciones del formulario, false en caso contrario
  */
- function validar() {
+ function validarLogin() {
 
     //obtiene valores
     let inputEmail = $("#inputEmail").val();
@@ -65,7 +67,7 @@ function estadoInicial() {
 }
 
 /**
- * Procesa peticiòn de tipo GET para validar si la combinación email/contraseña corresponde a un usuario de la aplicación
+ * Procesa peticiòn de tipo GET para validarLogin si la combinación email/contraseña corresponde a un usuario de la aplicación
  */
 function autenticate(){
     let inputEmail = $("#inputEmail").val();
